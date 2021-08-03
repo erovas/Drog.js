@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drog.js</title>
+    <script src="Drog.min.js"></script>
+    <style>
+        
+        .win-dos {
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: #f1f1f1;;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        [data-drog] {
+            cursor: move;
+            background-color: #2196F3;
+            height: 35px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body style="height: 200vh;">
+
+    <h1>Drog.js</h1>
+
+    <form name="drag-head" class="win-dos">
+        <div data-drog>
+            <span>Click here to move</span>
+        </div>
+        <p>Move</p>
+        <p>this</p>
+        <p>ELEMENT</p>
+    </form>
+
+    <br><br>
+
+    <form name="drag-body" class="win-dos">
+        <p>Click</p>
+        <p>to</p>
+        <p>Move</p>
+        <p>this</p>
+        <p>ELEMENT</p>
+    </form>
+
+    <br><br>
+
+    <button onclick="on()">
+        on second one
+    </button>
+
+    <button onclick="off()">
+        off second one
+    </button>
+
+    <script>
+        Drog.on(document.forms["drag-head"]);
+        //Drog.on(document.forms["drag-body"]);
+
+        function on(){
+            Drog.on(document.forms["drag-body"]);
+        }
+
+        function off(){
+            Drog.off(document.forms["drag-body"]);
+        }
+
+    </script>
+
+    
+</body>
+</html>
