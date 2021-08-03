@@ -53,6 +53,7 @@ Define an internal element with the [data-drog] property, to serve as a drag poi
 
 or so, to drag the element with any point of itself (see demo)
 
+``` html
 <div id="element">
     <div>
         <span>Click to</span>
@@ -131,6 +132,7 @@ Define un elemento interno con la propiedad [data-drog], para servir como punto 
 
 o de esta forma, para arrastrar el elemento desde cualquier punto de el mismo (ver demo)
 
+``` html
 <div id="element">
     <div>
         <span>Click to</span>
