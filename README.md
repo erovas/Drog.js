@@ -11,7 +11,11 @@ Import the Drog.js JavaScript library wherever you want into the document before
 ``` html
 <script src="Drog.min.js"></script>
 <script>
-    Drog.on(document.getElementById("element"))
+    let element = document.getElementById("element");
+    let x = 200;
+    let y = 200;
+    Drog.on(element);
+    Drog.move(element, x, y)
 </script>
 ```
 
@@ -34,7 +38,11 @@ or
 ``` html
 <script type="module">
     import "Drog.min.js";
-    Drog.on(document.getElementById("element"))
+    let element = document.getElementById("element");
+    let x = 200;
+    let y = 200;
+    Drog.on(element);
+    Drog.move(element, x, y);
 </script>
 ```
 
@@ -90,7 +98,11 @@ Importar la libreria Drog.js en cualquier parte dentro del documento antes de ut
 ``` html
 <script src="Drog.min.js"></script>
 <script>
-    Drog.on(document.getElementById("element"))
+    let element = document.getElementById("element");
+    let x = 200;
+    let y = 200;
+    Drog.on(element);
+    Drog.move(element, x, y);
 </script>
 ```
 
@@ -113,7 +125,11 @@ o
 ``` html
 <script type="module">
     import "Drog.min.js";
-    Drog.on(document.getElementById("element"))
+    let element = document.getElementById("element");
+    let x = 200;
+    let y = 200;
+    Drog.on(element);
+    Drog.move(element, x, y);
 </script>
 ```
 

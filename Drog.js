@@ -1,5 +1,5 @@
 /*!
- * Drog.js v1.0.0
+ * Drog.js v1.1.0
  * [Back-compatibility: IE11+]
  * Copyright (c) 2021, Emanuel Rojas Vásquez
  * BSD 3-Clause License
@@ -68,6 +68,18 @@
         removeEvent(target, tstart, drogInit);
     }
 
+    function move(element, x, y){
+        
+        if(!element[isDrog])
+            return;
+
+        x = parseFloat(x) || 0;
+        y = parseFloat(y) || 0
+        element[Xt] = x;
+        element[Yt] = y;
+        element.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    }
+
     function drogInit(e){
         elmnt = this[father];
 
@@ -110,7 +122,8 @@
 
     window.Drog = {
         on: on,
-        off: off
+        off: off,
+        move: move
     }
 
 })(window, document);
