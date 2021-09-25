@@ -1,5 +1,5 @@
 /*!
- * Drog.js v1.1.0
+ * Drog.js v1.2.0
  * [Back-compatibility: IE11+]
  * Copyright (c) 2021, Emanuel Rojas Vásquez
  * BSD 3-Clause License
@@ -10,12 +10,12 @@
     if(window.Drog)
         return console.error('Drog.js has already been defined');
 
-    let Xi = 0, Yi = 0, Xf = 0, Yf = 0, Xt = '-x', Yt = '-y',
-        mdown = 'mousedown', tstart = 'touchstart',
-        mmove = 'mousemove', tmove = 'touchmove',
-        mup = 'mouseup', tend = 'touchend',
+    let Xi = '-Xi', Yi = '-Yi', Xf = '-Xf', Yf = '-Yf', Xt = '-x', Yt = '-y',
+        mousedown = 'mousedown', touchstart = 'touchstart',
+        mousemove = 'mousemove', touchmove = 'touchmove',
+        mouseup = 'mouseup', touchend = 'touchend',
         father = '-f', passive = { passive: false },
-        isDrog = '-d', data = '[data-drog]', elmnt;
+        isDrog = '-d', data = '[data-drog]', elmnt, that;
 
     function addEvent(element, event, callback, opt){
         element.addEventListener(event, callback, opt || false);
@@ -39,13 +39,19 @@
         element[Xt] = 0;
         element[Yt] = 0;
 
+        //element[Xi] = 0;
+        //element[Yi] = 0;
+        //element[Xf] = 0;
+        //element[Yf] = 0;
+
         element.style.zIndex = 10;
+        target.style.touchAction = "none";
 
         // signing element
         element[isDrog] = true;
 
-        addEvent(target, mdown, drogInit);
-        addEvent(target, tstart, drogInit, passive);
+        addEvent(target, mousedown, drogInit);
+        addEvent(target, touchstart, drogInit, passive);
     }
 
     function off(element){
@@ -57,16 +63,19 @@
 
         element.style.zIndex = '';
         element.style.transform = '';
+        target.style.touchAction = '';
 
         // deleting references
         target[father] = null;
 
         // unsigning element
-        element[isDrog] = false;
+        element[isDrog] = null;
 
-        removeEvent(target, mdown, drogInit);
-        removeEvent(target, tstart, drogInit);
+        removeEvent(target, mousedown, drogInit);
+        removeEvent(target, touchstart, drogInit);
     }
+
+    
 
     function move(element, x, y){
         
@@ -81,43 +90,59 @@
     }
 
     function drogInit(e){
-        elmnt = this[father];
 
-        e.preventDefault();
+        //Fire by central or left click, avoid it
+        if(e.which === 2 || e.which === 3)
+            return;
+
+        that = this;
+        elmnt = that[father];
+
+        //e.preventDefault();
+
         // get the mouse cursor position at startup:
-        Xi = e.clientX || e.touches[0].clientX;
-        Yi = e.clientY || e.touches[0].clientY;
+        elmnt[Xi] = e.clientX || e.targetTouches[0].clientX;
+        elmnt[Yi] = e.clientY || e.targetTouches[0].clientY;
 
         // call a function whenever the cursor moves:
-        addEvent(document, mmove, drogMove);
-        addEvent(document, tmove, drogMove, passive);
-
-        // call a function when cursor/touch up/end
-        addEvent(document, mup, drogEnd);
-        addEvent(document, tend, drogEnd, passive);
+        if(e.type === touchstart){
+            addEvent(that, touchmove, drogMove, passive);
+            addEvent(that, touchend, drogEnd, passive);
+        }
+        else {
+            addEvent(that, mousemove, drogMove);
+            addEvent(that, mouseup, drogEnd);
+        }
     }
 
     function drogMove(e){
+
         e.preventDefault();
+        
+        elmnt = this[father];
+
         // calculate the new cursor position:
-        Xf = e.clientX || e.touches[0].clientX;
-        Yf = e.clientY || e.touches[0].clientY;
+        elmnt[Xf] = e.clientX || e.targetTouches[0].clientX;
+        elmnt[Yf] = e.clientY || e.targetTouches[0].clientY;
 
-        elmnt[Xt] -= Xi - Xf;
-        elmnt[Yt] -= Yi - Yf;
+        elmnt[Xt] -= elmnt[Xi] - elmnt[Xf];
+        elmnt[Yt] -= elmnt[Yi] - elmnt[Yf];
 
-        Xi = Xf;
-        Yi = Yf;
+        elmnt[Xi] = elmnt[Xf];
+        elmnt[Yi] = elmnt[Yf];
 
         elmnt.style.transform = 'translate(' + elmnt[Xt] + 'px,' + elmnt[Yt] + 'px)';
     }
 
     function drogEnd(){
+
+        that = this;
         // stop moving when mouse/touch is released:
-        removeEvent(document, mmove, drogMove);
-        removeEvent(document, tmove, drogMove, passive);
-        removeEvent(document, mup, drogEnd);
-        removeEvent(document, tend, drogEnd, passive);
+        removeEvent(that, mousemove, drogMove);
+        removeEvent(that, mouseup, drogEnd);
+
+        removeEvent(that, touchmove, drogMove, passive);
+        removeEvent(that, touchend, drogEnd, passive);
     }
 
     window.Drog = {

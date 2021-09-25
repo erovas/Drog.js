@@ -25,6 +25,15 @@
             text-align: center;
         }
 
+        .btn {
+            padding: 1.25rem;
+            border: 0;
+            border-radius: 3px;
+            background-color: #4F46E5;
+            color: #fff;
+            cursor: pointer;
+        }
+
 
     </style>
 </head>
@@ -43,9 +52,10 @@
 
     <br><br>
 
-    <form name="drag-body" class="win-dos">
-        <p>Click</p>
-        <p>to</p>
+    <form name="drag-head2" class="win-dos">
+        <div data-drog>
+            <span>Click here to move</span>
+        </div>
         <p>Move</p>
         <p>this</p>
         <p>ELEMENT</p>
@@ -53,16 +63,27 @@
 
     <br><br>
 
-    <button onclick="on()">
-        on second one
+    <form name="drag-body" class="win-dos">
+        <p>Click to</p>
+        <p>Move</p>
+        <p>this</p>
+        <p>ELEMENT</p>
+        <input type="text">
+    </form>
+
+    <br><br>
+
+    <button onclick="on()" class="btn">
+        Enable Drog On The Third Box
     </button>
 
-    <button onclick="off()">
-        off second one
+    <button onclick="off()" class="btn">
+        Disable Drog On The Third Box
     </button>
 
     <script>
         Drog.on(document.forms["drag-head"]);
+        Drog.on(document.forms["drag-head2"]);
         //Drog.on(document.forms["drag-body"]);
 
         function on(){

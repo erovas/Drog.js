@@ -72,6 +72,19 @@ or so, to drag the element with any point of itself (see demo)
 </div>
 ```
 
+## Changelog
+
+Version 1.2.0
+Added:
+- Multi-touch support
+
+Bugfix:
+- focusable elements were not accessible
+
+Version 1.1.0
+Added:
+- move() method
+
 ## Demo
 
 https://erovas.github.io/Drog.js/
@@ -158,6 +171,19 @@ o de esta forma, para arrastrar el elemento desde cualquier punto de el mismo (v
     <p>ELEMENT</p>
 </div>
 ```
+
+## Registro de cambios
+
+Version 1.2.0
+Agregado:
+- Soporte multitáctil
+
+Arreglo de fallos:
+- elementos enfocables no eran accesibles
+
+Version 1.1.0
+Agregado:
+- Metodo move()
 
 ## Demo
 
