@@ -1,5 +1,5 @@
 /*!
- * Drog.js v1.2.0
+ * Drog.js v1.2.1
  * [Back-compatibility: IE11+]
  * Copyright (c) 2021, Emanuel Rojas Vásquez
  * BSD 3-Clause License
@@ -110,8 +110,8 @@
             addEvent(that, touchend, drogEnd, passive);
         }
         else {
-            addEvent(that, mousemove, drogMove);
-            addEvent(that, mouseup, drogEnd);
+            addEvent(document, mousemove, drogMove);
+            addEvent(document, mouseup, drogEnd);
         }
     }
 
@@ -119,7 +119,8 @@
 
         e.preventDefault();
         
-        elmnt = this[father];
+        if(e.type === touchmove)
+            elmnt = this[father];
 
         // calculate the new cursor position:
         elmnt[Xf] = e.clientX || e.targetTouches[0].clientX;
@@ -138,8 +139,8 @@
 
         that = this;
         // stop moving when mouse/touch is released:
-        removeEvent(that, mousemove, drogMove);
-        removeEvent(that, mouseup, drogEnd);
+        removeEvent(document, mousemove, drogMove);
+        removeEvent(document, mouseup, drogEnd);
 
         removeEvent(that, touchmove, drogMove, passive);
         removeEvent(that, touchend, drogEnd, passive);
