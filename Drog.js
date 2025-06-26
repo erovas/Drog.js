@@ -2,7 +2,7 @@
  * Drog.js v1.2.1
  * [Back-compatibility: IE11+]
  * Copyright (c) 2021, Emanuel Rojas Vásquez
- * BSD 3-Clause License
+ * MIT License
  * https://github.com/erovas/Drog.js
  */
 (function(window, document){
