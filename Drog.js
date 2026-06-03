@@ -1,7 +1,7 @@
 /*!
  * Drog.js v1.2.1
  * [Back-compatibility: IE11+]
- * Copyright (c) 2021, Emanuel Rojas Vásquez
+ * Copyright (c) 2026, Emanuel Rojas Vásquez
  * MIT License
  * https://github.com/erovas/Drog.js
  */

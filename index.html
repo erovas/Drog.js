@@ -73,15 +73,17 @@
 
     <br><br>
 
-    <button onclick="on()" class="btn">
+    <button class="btn" id="btn-on">
         Enable Drog On The Third Box
     </button>
 
-    <button onclick="off()" class="btn">
+    <button class="btn" id="btn-off">
         Disable Drog On The Third Box
     </button>
 
-    <script>
+    <script type="module">
+        import Drog from './drog.Module.js';
+
         Drog.on(document.forms["drag-head"]);
         Drog.on(document.forms["drag-head2"]);
         //Drog.on(document.forms["drag-body"]);
@@ -93,6 +95,9 @@
         function off(){
             Drog.off(document.forms["drag-body"]);
         }
+
+        document.getElementById('btn-on').addEventListener('click', on);
+        document.getElementById('btn-off').addEventListener('click', off);
 
     </script>
 

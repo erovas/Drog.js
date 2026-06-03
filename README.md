@@ -46,6 +46,19 @@ or
 </script>
 ```
 
+or
+
+``` html
+<script type="module">
+    import Drog from './drog.Module.js';
+    let element = document.getElementById("element");
+    let x = 200;
+    let y = 200;
+    Drog.on(element);
+    Drog.move(element, x, y);
+</script>
+```
+
 Define an internal element with the [data-drog] property, to serve as a drag point:
 
 ``` html
@@ -138,6 +151,19 @@ o
 ``` html
 <script type="module">
     import "Drog.min.js";
+    let element = document.getElementById("element");
+    let x = 200;
+    let y = 200;
+    Drog.on(element);
+    Drog.move(element, x, y);
+</script>
+```
+
+o
+
+``` html
+<script type="module">
+    import Drog from './drog.Module.js';
     let element = document.getElementById("element");
     let x = 200;
     let y = 200;
