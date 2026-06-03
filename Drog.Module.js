@@ -12,7 +12,7 @@ const Xf = '-Xf';
 const Yf = '-Yf'; 
 const Xt = '-x'; 
 const Yt = '-y';
-const mousedown = 'mousedown'; 
+const MOUSEDOWN = 'mousedown'; 
 const TOUCHSTART = 'touchstart';
 const MOUSEMOVE = 'mousemove';
 const TOUCHMOVE = 'touchmove';
@@ -84,7 +84,7 @@ function on(element) {
     // signing element
     element[IS_DROG] = true;
 
-    addEvent(target, mousedown, drogInit);
+    addEvent(target, MOUSEDOWN, drogInit);
     addEvent(target, TOUCHSTART, drogInit, PASSIVE);
 }
 
@@ -109,7 +109,7 @@ function off(element) {
     // unsigning element
     element[IS_DROG] = null;
 
-    removeEvent(target, mousedown, drogInit);
+    removeEvent(target, MOUSEDOWN, drogInit);
     removeEvent(target, TOUCHSTART, drogInit);
 }
 
