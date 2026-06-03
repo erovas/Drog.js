@@ -108,7 +108,7 @@ https://erovas.github.io/Drog.js/
 
 ## License
 
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](https://github.com/erovas/Drog.js/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License.
 
 # Spanish - Español
 
@@ -221,4 +221,4 @@ https://erovas.github.io/Drog.js/
 
 ## Licencia
 
-Este proyecto está licenciado bajo Licencia BSD 3-Clause - ver el archivo [LICENCIA](https://github.com/erovas/Drog.js/blob/main/LICENSE) para mas detalles.
+Este proyecto está licenciado bajo Licencia MIT.
